@@ -1,0 +1,2 @@
+# StegoSolve
+A steganography tool
