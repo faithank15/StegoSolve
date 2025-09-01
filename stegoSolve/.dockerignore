@@ -5,14 +5,11 @@ __pycache__/
 *.pyd
 *.log
 
-.env
-# Virtual env
+# Virtual envs
 .venv/
 venv/
-
-# Ruff cache
 .ruff_cache/
-
+.env
 # Django
 db.sqlite3
 media/
@@ -20,7 +17,12 @@ media/
 # Node/Front-end
 node_modules/
 
+# Git
+.git/
+.gitignore
+
 # OS/editor
 .DS_Store
 .idea/
 .vscode/
+*.swp
