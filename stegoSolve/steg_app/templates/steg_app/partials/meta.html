@@ -1,0 +1,9 @@
+ 
+{% if metadata %}
+    {% for line in metadata %}
+        <hr>
+        {{ line }}
+    {% endfor %}
+{% else %}
+    <p>Aucune metadonnée trouvée.</p>
+{% endif %}

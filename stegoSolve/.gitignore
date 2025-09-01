@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+.env
+# Virtual env
+.venv/
+venv/
+
+# Ruff cache
+.ruff_cache/
+
+# Django
+db.sqlite3
+media/
+
+# Node/Front-end
+node_modules/
+
+# Docker
+Dockerfile
+.dockerignore
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/

@@ -1,0 +1,9 @@
+{% if exif %}
+        {% for line in exif %}
+             <hr>
+                {{ line }}
+        {% endfor %}
+{% else %}
+        <p>Aucune donnée EXIF trouvée.</p>
+{% endif %}
+

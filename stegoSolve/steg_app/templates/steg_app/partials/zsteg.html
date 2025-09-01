@@ -1,0 +1,9 @@
+<ul>
+    {% if zsteg %}
+        {% for lines in zsteg %}
+            <li>{{ lines }}</li>
+        {% endfor %}
+    {% else %}
+        <li>Aucun résultat trouvé.</li>
+    {% endif %}
+</ul>

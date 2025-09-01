@@ -1,0 +1,172 @@
+{% extends "steg_app/base.html" %}
+{% load static %}
+
+{% block main %}
+    <main class="container px-5 mt-5">
+
+        <section class="glass-card exif mb-3">
+            <div class="d-flex justify-content-center">
+                <img class="img-fluid f-img" src="{{ image_url }}" alt="Uploaded Image">
+            </div>
+            <ul class="d-flex row align-items-start ul px-5 py-3">
+                <li class="col-6">
+                    {% if exif %}
+                        <section class="exif-data">
+                            <h4 class="text-center">Exif-DATA</h4>
+                            <section hx-get="{% url 'analyse_exif' %}?path={{ saved_path }}"
+                                hx-trigger="load"
+                                hx-swap="outerHTML">
+                                <div id="loader" class="hx-indicator">
+                                    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+                                    <dotlottie-wc src="https://lottie.host/1ba0d235-9a71-4fa8-8e0a-287498388f3e/DK26G2Mqsp.lottie" speed="1" autoplay loop></dotlottie-wc>
+                                </div>
+                            </section>
+                        </section>
+                    {% endif %}
+                    
+                </li>
+                <li class="col-6">
+                    {% if metadata %}
+                        <section class="exif-data">
+                            <h4 class="text-center">Meta-DATA</h4>
+                            <section hx-get="{% url 'analyse_metadata' %}?path={{ saved_path }}"
+                                hx-trigger="load"
+                                hx-swap="outerHTML">
+                                <div id="loader" class="hx-indicator">
+                                    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+                                    <dotlottie-wc src="https://lottie.host/1ba0d235-9a71-4fa8-8e0a-287498388f3e/DK26G2Mqsp.lottie" speed="1" autoplay loop></dotlottie-wc>
+                                </div>
+                            </section>
+                        </section>
+                    {% endif %}
+                </li>
+            </ul>
+            <div class="row d-flex justify-content-between gy-3">
+                {% if stegsolve %}
+                    <section hx-get="{% url 'analyse_stegsolve' %}?path={{ saved_path }}"
+                        hx-trigger="load"
+                        hx-swap="outerHTML">
+                        <div id="loader" class="hx-indicator">
+                            <span class="spinner"></span>
+                        </div>
+                    </section>
+                {% endif %}
+            </div>                    
+        </section>
+           
+    
+        {% if File %}
+            <section class="glass-card">
+                <div class="header">file :</div>
+                <section hx-get="{% url 'analyse_file' %}?path={{ saved_path }}"
+                    hx-trigger="load"
+                    hx-swap="outerHTML">
+                    <div id="loader" class="hx-indicator">
+                        <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+                        <dotlottie-wc src="https://lottie.host/1ba0d235-9a71-4fa8-8e0a-287498388f3e/DK26G2Mqsp.lottie" speed="1" autoplay loop></dotlottie-wc>
+                    </div>
+                </section>
+            </section>
+        {% endif %}
+    
+        {% if steghide %}
+            <section class="glass-card">
+                <div class="header">steghide :</div>
+                <section hx-get="{% url 'analyse_steghide' %}?path={{ saved_path }}&password={{ password }}&wordlist={{ wordlist }}"
+                    hx-trigger="load"
+                    hx-swap="outerHTML">
+                    <div id="loader" class="hx-indicator">
+                        <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+                        <dotlottie-wc src="https://lottie.host/1ba0d235-9a71-4fa8-8e0a-287498388f3e/DK26G2Mqsp.lottie" speed="1" autoplay loop></dotlottie-wc>
+                    </div>
+                </section>
+            </section>
+        {% endif %}
+        
+        {% if zsteg %}
+            <section class="glass-card">
+                <div class="header">zsteg :</div>
+                <section hx-get="{% url 'analyse_zsteg' %}?path={{ saved_path }}"
+                    hx-trigger="load"
+                    hx-swap="outerHTML">
+                    <div id="loader" class="hx-indicator">
+                        <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+                        <dotlottie-wc src="https://lottie.host/1ba0d235-9a71-4fa8-8e0a-287498388f3e/DK26G2Mqsp.lottie" speed="1" autoplay loop></dotlottie-wc>
+                    </div>
+                </section>
+            </section>
+        {% endif %}
+
+        {% if strings %}
+            <section class="glass-card strings">
+                <div class="header">strings :</div>
+                <div class="strings-body">
+                    <section hx-get="{% url 'analyse_strings' %}?path={{ saved_path }}"
+                        hx-trigger="load"
+                        hx-swap="outerHTML">
+                        <div id="loader" class="hx-indicator">
+                            <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+                            <dotlottie-wc src="https://lottie.host/1ba0d235-9a71-4fa8-8e0a-287498388f3e/DK26G2Mqsp.lottie" speed="1" autoplay loop></dotlottie-wc>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        {% endif %}
+
+         {% if binwalk %}
+            <section class="glass-card">
+                <div class="header">binwalk :</div>
+                <section hx-get="{% url 'analyse_binwalk' %}?path={{ saved_path }}"
+                    hx-trigger="load"
+                    hx-swap="outerHTML">
+                    <div id="loader" class="hx-indicator">
+                        <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+                        <dotlottie-wc src="https://lottie.host/1ba0d235-9a71-4fa8-8e0a-287498388f3e/DK26G2Mqsp.lottie" speed="1" autoplay loop></dotlottie-wc>
+                    </div>
+                </section>
+            </section>
+        {% endif %}
+        {% if foremost %}
+            <section class="glass-card">
+                <div class="header">foremost :</div>
+                <section hx-get="{% url 'analyse_foremost' %}?path={{ saved_path }}"
+                    hx-trigger="load"
+                    hx-swap="outerHTML">
+                    <div id="loader" class="hx-indicator">
+                        <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+                        <dotlottie-wc src="https://lottie.host/1ba0d235-9a71-4fa8-8e0a-287498388f3e/DK26G2Mqsp.lottie" speed="1" autoplay loop></dotlottie-wc>
+                    </div>
+                </section>
+            </section>
+        {% endif %}
+
+        {% if pngcheck %}
+            <section class="glass-card">
+                <div class="header">pngcheck :</div>
+                <section hx-get="{% url 'analyse_pngcheck' %}?path={{ saved_path }}"
+                    hx-trigger="load"
+                    hx-swap="outerHTML">
+                    <div id="loader" class="hx-indicator">
+                        <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+                        <dotlottie-wc src="https://lottie.host/1ba0d235-9a71-4fa8-8e0a-287498388f3e/DK26G2Mqsp.lottie" speed="1" autoplay loop></dotlottie-wc>
+                    </div>
+                </section>
+            </section>
+        {% endif %}
+
+        {% if jpeginfo %}
+            <section class="glass-card">
+                <div class="header">jpeginfo :</div>
+                <section hx-get="{% url 'analyse_jpeginfo' %}?path={{ saved_path }}"
+                    hx-trigger="load"
+                    hx-swap="outerHTML">
+                    <div id="loader" class="hx-indicator">
+                        <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+                        <dotlottie-wc src="https://lottie.host/1ba0d235-9a71-4fa8-8e0a-287498388f3e/DK26G2Mqsp.lottie" speed="1" autoplay loop></dotlottie-wc>
+                    </div>
+                </section>
+            </section>
+        {% endif %}
+
+    </main>
+{% endblock %}

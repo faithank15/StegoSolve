@@ -1,0 +1,6 @@
+{% for line in png %}
+    <div>{{ line }}</div>
+{% endfor %}
+{% if not png %}
+    <p>Aucun résultat trouvé.</p>
+{% endif %}

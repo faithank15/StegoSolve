@@ -1,0 +1,9 @@
+<ul>
+    {% if steghide %}
+        {% for line in steghide %}
+            <li>{{ line }}</li>
+        {% endfor %}
+    {% else %}
+        <li>Aucune donnée EXIF trouvée.</li>
+    {% endif %}
+</ul>

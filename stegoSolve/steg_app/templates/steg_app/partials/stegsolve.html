@@ -1,0 +1,12 @@
+{% load static %}
+{% load image_b %}
+
+{% if layers %}
+    {% for name, img in layers.items %}
+      {% with buf=img|image_to_base64 %}
+        <img src="data:image/png;base64,{{ buf }}" alt="{{ name }}" class="w-full col-3"/>
+      {% endwith %}
+    {% endfor %}
+{% else %}
+  <p>Aucun résultat</p>
+{% endif %}

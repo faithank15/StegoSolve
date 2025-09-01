@@ -1,0 +1,6 @@
+{% for line in jpeginfo %}
+    <div>{{ line }}</div>
+{% endfor %}
+{% if not jpeginfo %}
+    <p>Aucun résultat trouvé.</p>
+{% endif %}
