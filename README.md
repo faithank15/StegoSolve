@@ -54,10 +54,16 @@ Si vous n’avez pas Docker, suivez ces instructions :
 
 ### 3. Construire l’image Docker
 
-`docker build -t stegapp .`
+`docker build -t dockerfile .`
 
 ---
 
 ### 4. Lancer le conteneur
 
-`docker run -p 8000:8000 
+`docker run -it --rm -p 8080:8000 dockerfile:latest`
+
+---
+
+### 5. Accéder à l’application
+
+Ouvrez votre navigateur sur : http://127.0.0.1:8080/
