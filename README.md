@@ -48,7 +48,7 @@ Si vous n’avez pas Docker, suivez ces instructions :
 ### 2. Cloner le projet
 
 `git clone https://github.com/faithank15/StegoSolve.git`
-`cd StegoSolve/stegoSolve`
+`cd StegoSolve/`
 
 ---
 
